@@ -1,0 +1,17 @@
+C:\Users\goran\source\repos\FinkiBets\FinkiBets.Service\bin\Debug\net8.0\FinkiBets.Service.deps.json
+C:\Users\goran\source\repos\FinkiBets\FinkiBets.Service\bin\Debug\net8.0\FinkiBets.Service.dll
+C:\Users\goran\source\repos\FinkiBets\FinkiBets.Service\bin\Debug\net8.0\FinkiBets.Service.pdb
+C:\Users\goran\source\repos\FinkiBets\FinkiBets.Service\bin\Debug\net8.0\FinkiBets.Domain.dll
+C:\Users\goran\source\repos\FinkiBets\FinkiBets.Service\bin\Debug\net8.0\FinkiBets.Repository.dll
+C:\Users\goran\source\repos\FinkiBets\FinkiBets.Service\bin\Debug\net8.0\FinkiBets.Domain.pdb
+C:\Users\goran\source\repos\FinkiBets\FinkiBets.Service\bin\Debug\net8.0\FinkiBets.Repository.pdb
+C:\Users\goran\source\repos\FinkiBets\FinkiBets.Service\obj\Debug\net8.0\FinkiBets.Service.csproj.AssemblyReference.cache
+C:\Users\goran\source\repos\FinkiBets\FinkiBets.Service\obj\Debug\net8.0\FinkiBets.Service.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\goran\source\repos\FinkiBets\FinkiBets.Service\obj\Debug\net8.0\FinkiBets.Service.AssemblyInfoInputs.cache
+C:\Users\goran\source\repos\FinkiBets\FinkiBets.Service\obj\Debug\net8.0\FinkiBets.Service.AssemblyInfo.cs
+C:\Users\goran\source\repos\FinkiBets\FinkiBets.Service\obj\Debug\net8.0\FinkiBets.Service.csproj.CoreCompileInputs.cache
+C:\Users\goran\source\repos\FinkiBets\FinkiBets.Service\obj\Debug\net8.0\FinkiBet.4AF05125.Up2Date
+C:\Users\goran\source\repos\FinkiBets\FinkiBets.Service\obj\Debug\net8.0\FinkiBets.Service.dll
+C:\Users\goran\source\repos\FinkiBets\FinkiBets.Service\obj\Debug\net8.0\refint\FinkiBets.Service.dll
+C:\Users\goran\source\repos\FinkiBets\FinkiBets.Service\obj\Debug\net8.0\FinkiBets.Service.pdb
+C:\Users\goran\source\repos\FinkiBets\FinkiBets.Service\obj\Debug\net8.0\ref\FinkiBets.Service.dll

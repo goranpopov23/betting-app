@@ -1,0 +1,92 @@
+﻿@model IEnumerable<FinkiBets.Domain.Domain.Match>
+
+@{
+    ViewData["Title"] = "Football Matches";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-4 text-primary border-bottom pb-2">⚽ Football Matches</h2>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-12 mb-3">
+                <div class="card shadow-sm border-left-primary">
+                    <div class="card-body d-flex justify-content-between align-items-center">
+                        <div class="flex-grow-1">
+                            <h5 class="mb-1 fw-bold">@item.Name</h5>
+                            <small class="text-muted"><i class="bi bi-clock"></i> @item.startTime.ToString("f")</small>
+                        </div>
+
+                        <div class="d-flex gap-2">
+                            @foreach (var odd in item.odds.OrderBy(o => o.Label == "1" ? 1 : o.Label == "X" ? 2 : 3))
+                            {
+                                <div class="text-center">
+                                    <span class="d-block small text-muted">@odd.Label</span>
+                                    <button type="button"
+                                            class="btn btn-primary px-4 py-2 fw-bold add-bet-btn"
+                                            data-odd-id="@odd.Id"
+                                            onclick="addBetToTicket('@odd.Id')">
+                                        @odd.Odds.ToString("F2")
+                                    </button>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<!-- Add jQuery or use vanilla JS -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    function addBetToTicket(oddId) {
+        $.ajax({
+            url: '@Url.Action("AddBetToTicket", "Ticket")',
+            type: 'POST',
+            data: { id: oddId },
+            headers: {
+                'RequestVerificationToken': $('input[name="__RequestVerificationToken"]').val()
+            },
+            success: function(response) {
+                // Optional: Show a success message
+                showNotification('Bet added to ticket!', 'success');
+
+                // Optional: Update UI if needed
+                // For example, disable the button
+                // $(`button[data-odd-id="${oddId}"]`).prop('disabled', true);
+            },
+            error: function(xhr, status, error) {
+                showNotification('Error adding bet: ' + error, 'danger');
+            }
+        });
+    }
+
+    function showNotification(message, type) {
+        // Create a Bootstrap toast notification
+        const toast = $(`
+            <div class="toast align-items-center text-bg-${type} border-0" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex">
+                    <div class="toast-body">
+                        ${message}
+                    </div>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+                </div>
+            </div>
+        `);
+
+        $('#notification-container').append(toast);
+        const bsToast = new bootstrap.Toast(toast[0]);
+        bsToast.show();
+
+        // Remove toast after it hides
+        toast.on('hidden.bs.toast', function () {
+            $(this).remove();
+        });
+    }
+</script>
+
+<!-- Add this container for notifications -->
+<div id="notification-container" class="position-fixed top-0 end-0 p-3" style="z-index: 11"></div>

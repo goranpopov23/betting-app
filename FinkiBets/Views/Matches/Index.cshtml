@@ -1,0 +1,69 @@
+﻿@model IEnumerable<FinkiBets.Domain.Domain.Match>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.startTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.matchType)
+            </th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.startTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.matchType)
+            </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> <br />
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> <br />
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+                @if (item.odds != null)
+                {
+                    var sortedOdds = item.matchType == FinkiBets.Domain.Domain.SportType.Football
+                    ? item.odds.OrderBy(o => o.Label == "1" ? 1 : o.Label == "X" ? 2 : 3).ToList()
+                    : item.odds.OrderBy(o => o.Label.Contains("Over") ? 1 : 2).ToList();
+
+                    foreach (var odd in sortedOdds)
+                    {
+                        <td>
+                            <button class="btn btn-outline-primary btn-sm">
+                                <strong>@odd.Label</strong> <br />
+                                @odd.Odds
+                            </button>
+                        </td>
+                    }
+                }
+        </tr>
+}
+    </tbody>
+</table>

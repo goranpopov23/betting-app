@@ -1,0 +1,95 @@
+﻿@model IEnumerable<FinkiBets.Domain.Domain.Match>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container mt-4">
+    <h2 class="mb-4 text-orange border-bottom pb-2" style="color: #fd7e14;">🏀 Basketball Player Props</h2>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-6 col-lg-4 mb-4">
+                <div class="card h-100 shadow-sm border-0 bg-light">
+                    <div class="card-header bg-white border-0 pt-3 text-center">
+                        <div class="rounded-circle bg-warning d-inline-block p-3 mb-2">
+                            <i class="bi bi-person-fill text-white fs-4"></i>
+                        </div>
+                        <h5 class="card-title fw-bold mb-0">@item.Name</h5>
+                    </div>
+                    <div class="card-body text-center">
+                        <p class="text-muted small mb-3">Starts: @item.startTime.ToString("g")</p>
+                        <hr />
+                        <div class="row g-2">
+                            @foreach (var odd in item.odds.OrderBy(o => o.Label == "Over" ? 1 : 2))
+                            {
+                                <div class="col-6">
+                                    <button type ="button"
+                                                class="btn btn-outline-dark w-100 px-4 py-2 fw-bold add-bet-btn"
+                                                data-odd-id="@odd.Id"
+                                                onclick="addBetToTicket('@odd.Id')">
+                                        <div class="small">@odd.Label</div>
+                                        <div class="fw-bold fs-5">@odd.Odds.ToString("F2")</div>
+                                    </button>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<!-- Add jQuery or use vanilla JS -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    function addBetToTicket(oddId) {
+        $.ajax({
+            url: '@Url.Action("AddBetToTicket", "Ticket")',
+            type: 'POST',
+            data: { id: oddId },
+            headers: {
+                'RequestVerificationToken': $('input[name="__RequestVerificationToken"]').val()
+            },
+            success: function(response) {
+                // Optional: Show a success message
+                showNotification('Bet added to ticket!', 'success');
+
+                // Optional: Update UI if needed
+                // For example, disable the button
+                // $(`button[data-odd-id="${oddId}"]`).prop('disabled', true);
+            },
+            error: function(xhr, status, error) {
+                showNotification('Error adding bet: ' + error, 'danger');
+            }
+        });
+    }
+
+    function showNotification(message, type) {
+        // Create a Bootstrap toast notification
+        const toast = $(`
+            <div class="toast align-items-center text-bg-${type} border-0" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="d-flex">
+                    <div class="toast-body">
+                        ${message}
+                    </div>
+                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+                </div>
+            </div>
+        `);
+
+        $('#notification-container').append(toast);
+        const bsToast = new bootstrap.Toast(toast[0]);
+        bsToast.show();
+
+        // Remove toast after it hides
+        toast.on('hidden.bs.toast', function () {
+            $(this).remove();
+        });
+    }
+</script>
+
+<!-- Add this container for notifications -->
+<div id="notification-container" class="position-fixed top-0 end-0 p-3" style="z-index: 11"></div>

@@ -1,0 +1,12 @@
+C:\Users\goran\source\repos\FinkiBets\FinkiBets.Domain\bin\Debug\net8.0\FinkiBets.Domain.deps.json
+C:\Users\goran\source\repos\FinkiBets\FinkiBets.Domain\bin\Debug\net8.0\FinkiBets.Domain.dll
+C:\Users\goran\source\repos\FinkiBets\FinkiBets.Domain\bin\Debug\net8.0\FinkiBets.Domain.pdb
+C:\Users\goran\source\repos\FinkiBets\FinkiBets.Domain\obj\Debug\net8.0\FinkiBets.Domain.csproj.AssemblyReference.cache
+C:\Users\goran\source\repos\FinkiBets\FinkiBets.Domain\obj\Debug\net8.0\FinkiBets.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\goran\source\repos\FinkiBets\FinkiBets.Domain\obj\Debug\net8.0\FinkiBets.Domain.AssemblyInfoInputs.cache
+C:\Users\goran\source\repos\FinkiBets\FinkiBets.Domain\obj\Debug\net8.0\FinkiBets.Domain.AssemblyInfo.cs
+C:\Users\goran\source\repos\FinkiBets\FinkiBets.Domain\obj\Debug\net8.0\FinkiBets.Domain.csproj.CoreCompileInputs.cache
+C:\Users\goran\source\repos\FinkiBets\FinkiBets.Domain\obj\Debug\net8.0\FinkiBets.Domain.dll
+C:\Users\goran\source\repos\FinkiBets\FinkiBets.Domain\obj\Debug\net8.0\refint\FinkiBets.Domain.dll
+C:\Users\goran\source\repos\FinkiBets\FinkiBets.Domain\obj\Debug\net8.0\FinkiBets.Domain.pdb
+C:\Users\goran\source\repos\FinkiBets\FinkiBets.Domain\obj\Debug\net8.0\ref\FinkiBets.Domain.dll
